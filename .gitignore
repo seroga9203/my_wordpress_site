@@ -1,0 +1,6 @@
+/*
+wp-content/*
+!.gitignore
+!wp-content/themes
+wp-content/themes/*
+!wp-content/themes/my-theme
