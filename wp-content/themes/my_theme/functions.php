@@ -194,3 +194,5 @@ function redirect_if_user_not_logged_in() {
 	}
 
 }
+
+add_filter( 'use_block_editor_for_post', '__return_false' );
