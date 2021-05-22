@@ -181,3 +181,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_action( 'template_redirect', 'redirect_if_user_not_logged_in' );
+
+function redirect_if_user_not_logged_in() {
+
+	if ( ! is_user_logged_in() ) { //example can be is_page(23) where 23 is page ID
+
+		wp_redirect( 'http://example.com/wp-admin ');
+
+		exit;// never forget this exit since its very important for the wp_redirect() to have the exit / die
+
+	}
+
+}
