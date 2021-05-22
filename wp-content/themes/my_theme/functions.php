@@ -196,3 +196,20 @@ function redirect_if_user_not_logged_in() {
 }
 
 add_filter( 'use_block_editor_for_post', '__return_false' );
+
+add_action('init', function(){
+	add_theme_support('post-thumbnails');
+});
+
+add_filter('acf/fields/relationship/query', 'my_acf_fields_relationship_query', 10, 3);
+function my_acf_fields_relationship_query( $args, $field, $post_id ) {
+
+	// Show 40 posts per AJAX call.
+	$args['posts_per_page'] = 40;
+
+	// Restrict results to children of the current post only.
+	$args['post_parent'] = $post_id;
+
+	return $args;
+}
+
